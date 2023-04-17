@@ -1,4 +1,14 @@
-import { Sequelize, Model, Column } from "sequelize-typescript";
+import { Sequelize } from "sequelize-typescript";
+import dotenv from 'dotenv';
+
+dotenv.config();
+
+const nameDB = `${process.env.NAMEDB}`;
+const dialect = `${process.env.NAMEDB}`;
+const username = `${process.env.NAMEDB}`;
+const password = `${process.env.NAMEDB}`;
+const host = `${process.env.NAMEDB}`;
+const port = `${process.env.NAMEDB}`;
 
 const database = new Sequelize({
   database: 'crud',

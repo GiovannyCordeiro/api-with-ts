@@ -24,3 +24,5 @@ Customer.init({
     type: DataType.INTEGER
   }
 }, {sequelize: database})
+
+export default Customer;
