@@ -8,6 +8,7 @@ import database from './database';
 
 app.listen(PORT, () => {
   console.log(`Server is running at ${PORT}.`)
+  database.sync();
   database.authenticate()
     .then(async() => {
       console.log("db connected")

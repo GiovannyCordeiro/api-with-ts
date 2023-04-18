@@ -4,11 +4,12 @@ import dotenv from 'dotenv';
 dotenv.config();
 
 const nameDB = `${process.env.NAMEDB}`;
-const dialect = `${process.env.NAMEDB}`;
-const username = `${process.env.NAMEDB}`;
-const password = `${process.env.NAMEDB}`;
-const host = `${process.env.NAMEDB}`;
-const port = `${process.env.NAMEDB}`;
+const dialect = `${process.env.DIALECTDB}`;
+const username = `${process.env.USERNAMEDB}`;
+const password = `${process.env.PASSWORDDB}`;
+const host = `${process.env.HOSTDB}`;
+const port = process.env.PORTDB;
+
 
 const database = new Sequelize({
   database: 'crud',
@@ -16,7 +17,7 @@ const database = new Sequelize({
   username: 'root',
   password: 'gio434445',
   host: 'localhost',
-  port: 3306
+  port: 3306,
 })
 
 export default database; 

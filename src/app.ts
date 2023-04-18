@@ -3,8 +3,11 @@ import express, { Request, Response, NextFunction } from 'express';
 import cors from 'cors';
 import morgan from 'morgan';
 import helmet from 'helmet';
+import customerRouter from './routers/customerRouter';
 
 const app = express();
+
+// app.use('/',customerRouter);
 
 app.use(morgan('tiny'));
 

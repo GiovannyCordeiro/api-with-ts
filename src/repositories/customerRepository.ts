@@ -1,4 +1,4 @@
-import Customer from "src/models/customer";
+import Customer from "../models/customer";
 
 // funcao que basicamente pega o item de acorod com seu id e faz retornar uma promise com
 // um dado type customer ou null, antes era customer ou undefined.
