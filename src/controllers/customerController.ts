@@ -19,12 +19,11 @@ async function getCustomers(req: Request, res: Response, next: NextFunction){
 
 async function postCustomer(req: Request, res: Response, next: NextFunction) {
   try{
-    const { first_name, last_name, CPF } = req.body;
+    const { first_name, last_name, CPF} = req.body.body;
     const customer = await Customer.create({
-      id:1,
-      first_name,
-      last_name,
-      CPF
+      first_name: first_name,
+      last_name: last_name,
+      CPF: CPF
     })
     res.status(201).json(customer);
   }

@@ -7,8 +7,6 @@ import customerRouter from './routers/customerRouter';
 
 const app = express();
 
-app.use('/', customerRouter);
-
 app.use(morgan('tiny'));
 
 app.use(cors());
@@ -16,6 +14,8 @@ app.use(cors());
 app.use(helmet());
 
 app.use(express.json());
+
+app.use('/', customerRouter);
 
 app.use((req: Request, res: Response, next: NextFunction) => {
     res.send("Hello World");
