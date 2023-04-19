@@ -21,13 +21,12 @@ async function addCustomer(customer : Customer): Promise<Customer>{
     if (!customer.first_name || !customer.CPF){
       return reject(new Error(`Invalid customer.`));
     }
-    // const newCustomer = new Customer(customer.first_name, customer.CPF);
-    const newCustomer = await Customer.create(
-      { 
-        first_name: customer.first_name, 
-        last_name: customer.last_name, 
-        CPF: customer.CPF 
-      });
+    const newCustomer = await Customer.create({
+      id: customer.id,
+      first_name: customer.first_name,
+      last_name: customer.last_name,
+      CPF: customer.CPF
+    });
     return resolve(newCustomer);
   })
 } 
@@ -35,8 +34,10 @@ async function addCustomer(customer : Customer): Promise<Customer>{
 async function updateCustomer(id: number, newCustomer: Customer): Promise<Customer | undefined> {
     return new Promise(async (resolve, reject) => {
       await Customer.update({
+        id: id,
         first_name: newCustomer.first_name,
-        las_name: newCustomer.last_name
+        last_name: newCustomer.last_name,
+        CPF: newCustomer.CPF
       },{
         where: {id: id}
       })

@@ -7,7 +7,7 @@ import customerRouter from './routers/customerRouter';
 
 const app = express();
 
-// app.use('/',customerRouter);
+app.use('/', customerRouter);
 
 app.use(morgan('tiny'));
 

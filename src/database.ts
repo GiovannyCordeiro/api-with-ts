@@ -1,5 +1,6 @@
 import { Sequelize } from "sequelize-typescript";
 import dotenv from 'dotenv';
+import Customer from "./models/customer";
 
 dotenv.config();
 
@@ -19,5 +20,7 @@ const database = new Sequelize({
   host: 'localhost',
   port: 3306,
 })
+
+database.addModels([Customer]);
 
 export default database; 

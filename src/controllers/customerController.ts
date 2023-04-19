@@ -18,12 +18,19 @@ async function getCustomers(req: Request, res: Response, next: NextFunction){
 }
 
 async function postCustomer(req: Request, res: Response, next: NextFunction) {
-  const customer = req.body as Customer;
-  const result = await customerRepository.addCustomer(customer);
-  if (result)
-      res.status(201).json(result);
-  else
-      res.sendStatus(400);
+  try{
+    const { first_name, last_name, CPF } = req.body;
+    const customer = await Customer.create({
+      id:1,
+      first_name,
+      last_name,
+      CPF
+    })
+    res.status(201).json(customer);
+  }
+  catch(e){
+
+  }
 }
 
 async function patchCustomer(req: Request, res: Response, next: NextFunction) {
