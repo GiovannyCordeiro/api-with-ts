@@ -27,6 +27,3 @@ API with a focus to improve my skills of back-end with Typescript, basically thi
    4. HOSTDB
    5. PORTDB 
 4. Run command `npm run dev` for iniciate the aplication.
-
-## License
-Open source
