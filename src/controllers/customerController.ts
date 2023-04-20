@@ -28,7 +28,11 @@ async function postCustomer(req: Request, res: Response, next: NextFunction) {
     res.status(201).json(customer);
   }
   catch(e){
-
+    res.json(
+      {
+        "status": 404, 
+        "body": "Erro funcao post Customer"
+      });
   }
 }
 
