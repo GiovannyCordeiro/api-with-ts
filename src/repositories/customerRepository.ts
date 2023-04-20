@@ -51,13 +51,14 @@ async function updateCustomer(id: number, newCustomer: Customer): Promise<Custom
 }
 
 async function deleteCustomer(id: number): Promise<boolean> {
-    return new Promise(async (resolve, reject) => {
-      await Customer.destroy({
-        where: {
-          id: id
-        }
-      });
-    })
+  return new Promise(async (resolve, reject) => {
+    await Customer.destroy({
+      where: {
+        id: id
+      }
+    });
+    return resolve(true);
+  })
 }
 
 export default {
