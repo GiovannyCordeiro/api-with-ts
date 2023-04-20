@@ -5,10 +5,12 @@ import customerRepository from '../repositories/customerRepository';
 async function getCustomer(req: Request, res:Response, next:NextFunction){
   const id = req.params.id;
   const customer = await customerRepository.getCustomer(parseInt(id));
-  if(customer)
-    res.json(customer)
-  else
+  if(customer){
+    res.json(customer);
+  }
+  else{
     res.sendStatus(404);
+  }
 }
 
 async function getCustomers(req: Request, res: Response, next: NextFunction){
@@ -38,12 +40,13 @@ async function postCustomer(req: Request, res: Response, next: NextFunction) {
 
 async function patchCustomer(req: Request, res: Response, next: NextFunction) {
   const id = req.params.id;
-  const customer = req.body as Customer;
-  const result = await customerRepository.updateCustomer(parseInt(id), customer);
-  if (result)
-      res.json(result);
-  else
-      res.sendStatus(404);
+  const customer = req.body;
+  try{
+    const result = await customerRepository.updateCustomer(parseInt(id), customer.body);
+    res.json(result);
+  } catch (e:any) {
+    res.sendStatus(404).json(e);
+  }
 }
 
 async function deleteCustomer(req: Request, res: Response, next: NextFunction) {

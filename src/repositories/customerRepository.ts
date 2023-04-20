@@ -31,16 +31,22 @@ async function addCustomer(customer : Customer): Promise<Customer>{
   })
 } 
 
-async function updateCustomer(id: number, newCustomer: Customer): Promise<Customer | undefined> {
+async function updateCustomer(id: number, newCustomer: Customer): Promise<Customer | any > {
     return new Promise(async (resolve, reject) => {
-      await Customer.update({
-        id: id,
-        first_name: newCustomer.first_name,
-        last_name: newCustomer.last_name,
-        CPF: newCustomer.CPF
-      },{
-        where: {id: id}
-      })
+      try{
+        const result = await Customer.update({
+          id: id,
+          first_name: newCustomer.first_name,
+          last_name: newCustomer.last_name,
+          CPF: newCustomer.CPF
+        },{
+          where: {id: id}
+        })
+        return resolve(result);
+      }
+      catch (e:any) {
+        reject(e);
+      }
     });
 }
 
