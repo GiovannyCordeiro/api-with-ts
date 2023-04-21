@@ -1,7 +1,5 @@
 import Customer from "../models/customer";
 
-// funcao que basicamente pega o item de acorod com seu id e faz retornar uma promise com
-// um dado type customer ou null, antes era customer ou undefined.
 async function getCustomer(id:number): Promise<Customer | null>{
   return new Promise( async (resolve, reject) => {
     const result = await Customer.findByPk(id)
